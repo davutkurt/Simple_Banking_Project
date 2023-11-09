@@ -1,0 +1,46 @@
+
+POST http://localhost:8080/account/v1
+Content-Type: application/json
+Accept: application/json
+
+{
+    "accountNumber": "123456",
+    "owner": "Davut Kurt"
+}
+
+###
+
+GET http://localhost:8080/account/v1/123456
+Accept: application/json
+
+###
+
+POST http://localhost:8080/account/v1/credit/123456
+Accept: application/json
+Content-Type: application/json
+
+{
+  "amount": 1000.0
+}
+
+###
+
+POST http://localhost:8080/account/v1/debit/123456
+Accept: application/json
+Content-Type: application/json
+
+{
+  "amount": 50.0
+}
+
+###
+
+POST http://localhost:8080/account/v1/debitPhoneBillPayment/123456
+Accept: application/json
+Content-Type: application/json
+
+{
+  "telecomCompanyName": "Vodafone",
+  "phoneNumber": "5370000001",
+  "amount": 50.0
+}

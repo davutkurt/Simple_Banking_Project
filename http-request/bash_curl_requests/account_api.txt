@@ -1,0 +1,32 @@
+curl --location --request POST 'http://localhost:8080/account/v1' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--data-raw '    {
+    "accountNumber": "112358",
+    "owner": "Davut Kurt"
+}'
+
+curl --location --request POST 'http://localhost:8080/account/v1/credit/112358' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--data-raw '    {
+        "amount": 1000.0
+    }'
+
+curl --location --request POST 'http://localhost:8080/account/v1/debit/112358' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--data-raw '    {
+        "amount": 50.0
+    }'
+
+curl --location --request POST 'http://localhost:8080/account/v1/debitPhoneBillPayment/112358' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--data-raw '    {
+        "telecomCompanyName": "Vodafone",
+        "phoneNumber": "5370000001",
+        "amount": 1000.0
+}'
+
+curl --location --request GET 'http://localhost:8080/account/v1/112358'
