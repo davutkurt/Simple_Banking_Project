@@ -16,16 +16,16 @@ public class ConcreteTransaction extends Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long transactionId;
     @Column
-    Timestamp date;
+    private Timestamp date;
     @Column
-    Double amount = 0d;
+    private Double amount = 0d;
     @Column
-    String transactionType;
+    private String transactionType;
     @Column
     @JsonIgnore
-    String balanceDirection;
+    private String balanceDirection;
     @Column
-    String approvalCode;
+    private String approvalCode;
     @ManyToOne
     @JoinColumn(name = "accountId", nullable = false)
     @JsonBackReference

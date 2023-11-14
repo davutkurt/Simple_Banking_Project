@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.HashMap;
 
 // This class is a place holder you can change the complete implementation
@@ -33,7 +34,7 @@ public class AccountService {
     public Account findAccount(String accountNumber) {
         return accountRepository.findByAccountNumber(accountNumber);
     }
-
+    @Transactional
     public String deposit(Account account, DepositTransaction depositTransactionDTO)
             throws InsufficientBalanceException {
         DepositTransaction depositTransaction = new DepositTransaction(depositTransactionDTO.getAmount());
@@ -44,6 +45,7 @@ public class AccountService {
         return depositTransaction.getApprovalCode();
     }
 
+    @Transactional
     public String withdrawal(Account account, WithdrawalTransaction withdrawalTransactionDTO)
             throws InsufficientBalanceException {
         WithdrawalTransaction withdrawalTransaction = new WithdrawalTransaction(withdrawalTransactionDTO.getAmount());

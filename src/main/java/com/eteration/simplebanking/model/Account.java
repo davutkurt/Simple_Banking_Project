@@ -24,13 +24,13 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long accountId;
     @Column(unique = true)
-    String accountNumber;
+    private String accountNumber;
     @Column
-    String owner;
+    private String owner;
     @Column
-    Double balance = 0d;
+    private Double balance = 0d;
     @Column
-    Timestamp acoountCreateDate;
+    private Timestamp acoountCreateDate;
     @OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
     private List<ConcreteTransaction> transactions = new LinkedList<>();
 
